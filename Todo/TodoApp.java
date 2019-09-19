@@ -27,7 +27,7 @@ public class TodoApp {
 		}
 
 		while(true) {
-			shouTodo();
+			showTodo();
 			System.out.println("---操作を入力して下さい---");
 			System.out.println("1/登録 2/重要度変更 3/削除 4/終了");
 
@@ -54,7 +54,7 @@ public class TodoApp {
 	}
 
 	private static void saveFile(File file) {
-		// TODO 自動生成されたメソッド・スタブ
+		
 		BufferedWriter bw = null;
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
@@ -101,7 +101,6 @@ public class TodoApp {
 				list.add(todo);
 			}
 		}
-
 		catch (FileNotFoundException e){
 			e.printStackTrace();
 		}catch(UnsupportedEncodingException e) {
@@ -109,7 +108,6 @@ public class TodoApp {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-
 		finally {
 			if(br != null) {
 				try {
@@ -121,7 +119,7 @@ public class TodoApp {
 		}
 	}
 
-	private static void shouTodo() {
+	private static void showTodo() {
 
 		if(list.size() == 0) {
 			System.out.println("Todoは1件もありません");
@@ -130,7 +128,7 @@ public class TodoApp {
 
 		for(int i = 0 ; i < list.size(); i++) {
 			for(int j = i+1; j < list.size();j++) {
-				if(list.get(i).getImportance()<list.get(j).getImportance()) {
+				if(list.get(i).getImportance() < list.get(j).getImportance()) {
 					Todo temp = list.get(i);
 					list.set(i, list.get(j));
 					list.set(j,temp);
@@ -143,7 +141,6 @@ public class TodoApp {
 	}
 
 	private static void createTodo() {
-		// TODO 自動生成されたメソッド・スタブ
 		System.out.println("新規Todoを作成します");
 		System.out.println("Todoの内容を入力してください");
 		String todo = scan.nextLine();
@@ -161,9 +158,9 @@ public class TodoApp {
 			System.out.println("まだTodoはありません");
 			return;
 		}
+		
 		System.out.printf("重要度を変更します。番号を入力してください。%d~%d>",0,list.size()-1);
 		int index = scan.nextInt();
-
 		System.out.println("重要度を再設定してください");
 		int importance = scan.nextInt();
 		list.get(index).setImportance(importance);
@@ -175,6 +172,7 @@ public class TodoApp {
 			System.out.println("まだTodoはありません");
 			return;
 		}
+		
 		System.out.printf("Todoを削除します。番号を入力してください。%d~%d>", 0,list.size()-1);
 		int index = scan.nextInt();
 		list.remove(index);
