@@ -1,5 +1,3 @@
-package kiyoshicheck;
-
 /*参考URL
  * https://creatase.info/lets_make_a_program_zundoko-vol-3/
  */
